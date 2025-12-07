@@ -1,0 +1,63 @@
+#!/bin/bash
+
+RED="\033[31m"
+GREEN="\033[32m"
+CYAN="\033[36m"
+YELLOW="\033[33m"
+BOLD="\033[1m"
+RESET="\033[0m"
+
+show_live_time() {
+    tz="$1"
+
+    while true; do
+        clear
+        echo -e "${CYAN}${BOLD}==============================="
+        echo -e "   LIVE CLOCK → $tz"
+        echo -e "===============================${RESET}"
+        echo
+        echo -e "${YELLOW}Current Time:${RESET}"
+        echo -e "${GREEN}$(TZ="$tz" date)${RESET}"
+        echo
+        echo -e "${CYAN}Press ESC to return to menu...${RESET}"
+
+        read -rsn1 -t 1 key
+        [[ $key == $'\e' ]] && break
+    done
+}
+
+while true; do
+    clear
+    echo -e "${CYAN}${BOLD}==============================="
+    echo -e "         TIMEZONE VIEWER"
+    echo -e "===============================${RESET}"
+    echo -e "${YELLOW}Select a timezone:${RESET}"
+    echo
+    echo -e " ${GREEN}1) India${RESET}          (Asia/Kolkata)"
+    echo -e " ${GREEN}2) UK${RESET}             (Europe/London)"
+    echo -e " ${GREEN}3) Dubai${RESET}          (Asia/Dubai)"
+    echo -e " ${GREEN}4) Hong Kong${RESET}      (Asia/Hong_Kong)"
+    echo -e " ${GREEN}5) Melbourne${RESET}      (Australia/Melbourne)"
+    echo -e " ${GREEN}6) Japan${RESET}          (Asia/Tokyo)"
+    echo
+    echo -e "${CYAN}Press ESC to exit${RESET}"
+    echo
+    echo -ne "${BOLD}Enter choice: ${RESET}"
+
+    IFS= read -rsn1 key
+
+    [[ $key == $'\e' ]] && clear && exit 0
+
+    case "$key" in
+        1) show_live_time "Asia/Kolkata" ;;
+        2) show_live_time "Europe/London" ;;
+        3) show_live_time "Asia/Dubai" ;;
+        4) show_live_time "Asia/Hong_Kong" ;;
+        5) show_live_time "Australia/Melbourne" ;;
+        6) show_live_time "Asia/Tokyo" ;;
+        *)
+            echo -e "\n${RED}Invalid option! Press Enter...${RESET}"
+            read
+            ;;
+    esac
+done

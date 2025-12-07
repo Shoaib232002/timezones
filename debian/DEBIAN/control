@@ -1,0 +1,8 @@
+Package: timezones
+Version: 1.0.0
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Mohammed Shoaib Shoaib232002@gmail.com
+Description: Interactive timezone viewer with live clock updates.
+Homepage: https://github.com/Shoaib232002/timezones
