@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "description": "Interactive timezone viewer",
+  "homepage": "https://github.com/Shoaib232002/timezones",
+  "license": "MIT",
+  "url": "https://github.com/Shoaib232002/timezones/releases/download/v1.0.0/timezones_1.0.0_all.zip",
+  "bin": "timezones.exe"
+}
